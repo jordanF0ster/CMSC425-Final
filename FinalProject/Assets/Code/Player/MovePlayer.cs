@@ -5,8 +5,12 @@ using UnityEngine;
 public class MovePlayer : MonoBehaviour
 {
     float yAxisRotation = 0;
-    public float speed = 0.25f;
-    public float sensitivity = 100;
+    public float speed = 0.25f; // movement speed
+    public float sensitivity = 100; // camera sensitivity
+
+
+    Vector3 dashDirection; // vector pointing towards last faced direction for dash
+    public float dashSpeed = 5; // default dash speed
 
     Rigidbody rb;
 
@@ -19,20 +23,51 @@ public class MovePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Rigidbody rb = GetComponent<Rigidbody>();
 
+        // rotation around y axis
         yAxisRotation += sensitivity * Time.deltaTime * Input.GetAxis("Mouse X");
 
         Quaternion yQuatern = Quaternion.Euler(0, yAxisRotation, 0);
         transform.rotation = yQuatern;
 
-        if (Input.GetKey(KeyCode.W))
+        // basic wasd movement
+        if (Input.GetKey(KeyCode.W)) 
+        {
             transform.position += transform.forward * speed;
-        if (Input.GetKey(KeyCode.A))
+            dashDirection = transform.forward;
+        }
+        if (Input.GetKey(KeyCode.A)) 
+        {
             transform.position -= transform.right * speed;
-        if (Input.GetKey(KeyCode.S))
+            dashDirection = -1 * transform.right;
+        }
+        if (Input.GetKey(KeyCode.S)) 
+        {
             transform.position -= transform.forward * speed;
+            dashDirection = -1 * transform.forward;
+        }
         if (Input.GetKey(KeyCode.D))
+        {
             transform.position += transform.right * speed;
+            dashDirection = transform.right;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("DASH");
+            StartCoroutine(dash());
+        }
+    }
+
+    // Dash forward by translating position then setting velocity to 0
+    public IEnumerator dash()
+    {
+        // rb.AddForce(dashDirection * dashSpeed, ForceMode.VelocityChange);
+
+        transform.position += dashDirection * dashSpeed;
+        rb.velocity = Vector3.zero;
+        yield return new WaitForSeconds(3);
+
+        rb.velocity = Vector3.zero;
     }
 }
