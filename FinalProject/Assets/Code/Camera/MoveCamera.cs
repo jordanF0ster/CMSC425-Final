@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveCamera : MonoBehaviour
 {
 
-    public GameObject target;
+    public Blaster target;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,8 @@ public class MoveCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target.transform.position);
+        Vector3 fwd = target.transform.forward * target.shootDist;
+        Vector3 lookPos = target.transform.position + fwd;
+        transform.LookAt(lookPos);
     }
 }

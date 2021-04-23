@@ -6,7 +6,7 @@ public class Blaster : MonoBehaviour
 {
 
     public Transform tip;
-    // Start is called before the first frame update
+    public float shootDist = 10;
     private LineRenderer line;
 
     void Start()
@@ -27,10 +27,13 @@ public class Blaster : MonoBehaviour
 
             line.SetPosition(0, tip.position);
 
-            if (Physics.Raycast(transform.position, fwd, out hit, 10))
+            if (Physics.Raycast(transform.position, fwd, out hit, shootDist))
                 line.SetPosition(1, hit.point);
             else
-                line.SetPosition(1, transform.position + (fwd * 10));
+            {
+                line.SetPosition(1, transform.position + (fwd * shootDist));
+                Debug.Log("THIS DIST: " + (transform.position + (fwd * shootDist)));
+            }
         }
     }
 
