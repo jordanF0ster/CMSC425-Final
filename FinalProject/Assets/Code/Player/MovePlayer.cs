@@ -11,20 +11,25 @@ public class MovePlayer : MonoBehaviour
 
     Vector3 dashDirection; // vector pointing towards last faced direction for dash
     public float dashSpeed = 5; // default dash speed
+    bool isDashing = false;
 
     Rigidbody rb;
+
+    // for dash effect
+    private LineRenderer line;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+        line = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         // rotation around y axis
         yAxisRotation += sensitivity * Time.deltaTime * Input.GetAxis("Mouse X");
 
@@ -32,17 +37,17 @@ public class MovePlayer : MonoBehaviour
         transform.rotation = yQuatern;
 
         // basic wasd movement
-        if (Input.GetKey(KeyCode.W)) 
+        if (Input.GetKey(KeyCode.W))
         {
             transform.position += transform.forward * speed;
             dashDirection = transform.forward;
         }
-        if (Input.GetKey(KeyCode.A)) 
+        if (Input.GetKey(KeyCode.A))
         {
             transform.position -= transform.right * speed;
             dashDirection = -1 * transform.right;
         }
-        if (Input.GetKey(KeyCode.S)) 
+        if (Input.GetKey(KeyCode.S))
         {
             transform.position -= transform.forward * speed;
             dashDirection = -1 * transform.forward;
@@ -55,7 +60,6 @@ public class MovePlayer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("DASH");
             StartCoroutine(dash());
         }
     }
@@ -63,12 +67,36 @@ public class MovePlayer : MonoBehaviour
     // Dash forward by translating position then setting velocity to 0
     public IEnumerator dash()
     {
-        // rb.AddForce(dashDirection * dashSpeed, ForceMode.VelocityChange);
+        // break if already dashing
+        if (isDashing)
+        {
+            yield break;
+        }
+
+        isDashing = true;
+        line.enabled = true;
+
+
+        line.SetPosition(0, transform.position);
+        Vector3 newPos = transform.position + (dashDirection * dashSpeed);
+        line.SetPosition(0, transform.position);
+
 
         transform.position += dashDirection * dashSpeed;
-        rb.velocity = Vector3.zero;
-        yield return new WaitForSeconds(3);
+        
 
+        line.SetPosition(1, newPos);
+        rb.velocity = Vector3.zero;
+
+        // yield for dash effect
+        yield return new WaitForSeconds(0.1f);
+        line.enabled = false;
+
+        // yield until you can dash again
+        yield return new WaitForSeconds(0.5f);
+        isDashing = false;
+
+        
         rb.velocity = Vector3.zero;
     }
 }
