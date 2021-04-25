@@ -27,12 +27,16 @@ public class Blaster : MonoBehaviour
 
             line.SetPosition(0, tip.position);
 
+
             if (Physics.Raycast(transform.position, fwd, out hit, shootDist))
+            {
                 line.SetPosition(1, hit.point);
+                Enemy enemy = hit.collider.GetComponent<Enemy>();
+                enemy.mark();
+            }
             else
             {
                 line.SetPosition(1, transform.position + (fwd * shootDist));
-                Debug.Log("THIS DIST: " + (transform.position + (fwd * shootDist)));
             }
         }
     }
