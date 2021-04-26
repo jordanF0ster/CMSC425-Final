@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// camera always points at weapon shoot distance in blaster
-// should be positioned so crosshairs are always where max range of weapon is
-
 public class MoveCamera : MonoBehaviour
 {
 
