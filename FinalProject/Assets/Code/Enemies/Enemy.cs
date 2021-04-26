@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// script for enemy marking system
+
 public class Enemy : MonoBehaviour
 {
     public int health;
     bool marked = false;
     MeshRenderer mesh;
     public Material markedMaterial;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +28,13 @@ public class Enemy : MonoBehaviour
     {
         if (!marked)
         {
-            Debug.Log("IM HIT");
             marked = true;
             mesh.material.color = markedMaterial.color;
         }
+    }
+
+    public bool isMarked()
+    {
+        return marked;
     }
 }
