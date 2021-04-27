@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3592034544516403171}
   - component: {fileID: 3592034544516403170}
   - component: {fileID: 3592034544516403181}
+  - component: {fileID: -4581714945180306649}
   m_Layer: 8
   m_Name: Starting Room
   m_TagString: Untagged
@@ -97,6 +98,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4581714945180306649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592034544516403180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547e86177e1be4401bacab4beb6c9d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyToSpawn: {fileID: 8548872925107687480, guid: 4e6fe59c39021436ea67279f3a27f3a5,
+    type: 3}
+  player: {fileID: 1749692229213538264, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
 --- !u!1 &3592034545471681765
 GameObject:
   m_ObjectHideFlags: 0

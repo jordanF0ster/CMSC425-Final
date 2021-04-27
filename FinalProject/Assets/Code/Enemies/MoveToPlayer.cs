@@ -9,7 +9,7 @@ using UnityEngine;
 public class MoveToPlayer : MonoBehaviour
 {
 
-    public float speed = 10f;
+    public float speed = 5f;
     public Player player;
     public float rotationSpeed;
     //float health = 5;
@@ -23,7 +23,7 @@ public class MoveToPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player.transform);
+        transform.LookAt(player.getPos());
         transform.position += transform.forward * speed * Time.deltaTime;
 
         float dist = Vector3.Distance(player.transform.position, transform.position);

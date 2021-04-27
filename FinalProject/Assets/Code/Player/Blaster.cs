@@ -30,9 +30,13 @@ public class Blaster : MonoBehaviour
 
             if (Physics.Raycast(transform.position, fwd, out hit, shootDist))
             {
+
                 line.SetPosition(1, hit.point);
                 Enemy enemy = hit.collider.GetComponent<Enemy>();
-                enemy.mark();
+                if (enemy != null)
+                {
+                    enemy.mark();
+                }
             }
             else
             {
