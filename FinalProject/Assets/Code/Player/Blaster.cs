@@ -6,7 +6,7 @@ public class Blaster : MonoBehaviour
 {
 
     public Transform tip;
-    public float shootDist = 10;
+    public float shootDist = 20;
     private LineRenderer line;
 
     void Start()
@@ -21,33 +21,34 @@ public class Blaster : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             StartCoroutine(shoot());
-
-            Vector3 fwd = transform.TransformDirection(Vector3.forward);
-            RaycastHit hit;
-
-            line.SetPosition(0, tip.position);
-
-
-            if (Physics.Raycast(transform.position, fwd, out hit, shootDist))
-            {
-
-                line.SetPosition(1, hit.point);
-                Enemy enemy = hit.collider.GetComponent<Enemy>();
-                if (enemy != null)
-                {
-                    enemy.mark();
-                }
-            }
-            else
-            {
-                line.SetPosition(1, transform.position + (fwd * shootDist));
-            }
         }
     }
 
+    // coroutine to show line renderer
     public IEnumerator shoot()
     {
         line.enabled = true;
+
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        RaycastHit hit;
+
+        line.SetPosition(0, tip.position);
+
+
+        if (Physics.Raycast(transform.position, fwd, out hit, shootDist))
+        {
+            Enemy enemy = hit.collider.GetComponent<Enemy>();
+            line.SetPosition(1, hit.point);
+            if (enemy != null)
+            {
+                enemy.mark();
+            }
+        }
+        else
+        {
+            line.SetPosition(1, transform.position + (fwd * shootDist));
+        }
+
         yield return new WaitForSeconds(0.5f);
         line.enabled = false;
     }

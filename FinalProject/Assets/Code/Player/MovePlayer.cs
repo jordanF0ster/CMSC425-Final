@@ -10,71 +10,53 @@ public class MovePlayer : MonoBehaviour
 
 
     Vector3 dashDirection; // vector pointing towards last faced direction for dash
-    float dashSpeed = 15f; // default dash speed
+    float dashSpeed = 30f; // default dash speed
     bool isDashing = false;
 
     Rigidbody rb;
 
     // for dash effect
     private LineRenderer line;
+    Vector3 move;
+    Vector3 pos;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Cursor.lockState = CursorLockMode.Locked;
         line = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        // rotation around y axis
-        yAxisRotation += sensitivity * Time.deltaTime * Input.GetAxis("Mouse X");
+        // have player look at mouse by pointing ray in direction
+        Vector3 mousePos = Input.mousePosition;
+        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        Quaternion yQuatern = Quaternion.Euler(0, yAxisRotation, 0);
-        transform.rotation = yQuatern;
-
-        // basic wasd movement
-        if (Input.GetKey(KeyCode.W))
+        RaycastHit hit;
+        if (Physics.Raycast(mouseRay, out hit))
         {
-            transform.position += transform.forward * speed * Time.deltaTime;
-            dashDirection = transform.forward;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position -= transform.right * speed * Time.deltaTime;
-            dashDirection = -1 * transform.right;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position -= transform.forward * speed * Time.deltaTime;
-            dashDirection = -1 * transform.forward;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += transform.right * speed * Time.deltaTime;
-            dashDirection = transform.right;
+            Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            transform.LookAt(target);
         }
 
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    StartCoroutine(dash());
-        //}
+        move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
     }
 
     void FixedUpdate()
     {
+        movePlayer(move);
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(dash());
         }
     }
 
+    // for better collisions
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
+        //Debug.Log(collision.gameObject.name);
         if (collision.gameObject.name == "Starting Room")
         {
             rb.velocity = Vector3.zero;
@@ -83,6 +65,7 @@ public class MovePlayer : MonoBehaviour
     }
 
     // Dash forward by translating position then setting velocity to 0
+    // player must wait a certain number of seconds before they can dash again
     public IEnumerator dash()
     {
         // break if already dashing
@@ -120,5 +103,11 @@ public class MovePlayer : MonoBehaviour
 
         
         rb.velocity = Vector3.zero;
+    }
+
+    // move by rigid body
+    void movePlayer(Vector3 direction)
+    {
+        rb.MovePosition(transform.position + (direction * speed * Time.deltaTime));
     }
 }

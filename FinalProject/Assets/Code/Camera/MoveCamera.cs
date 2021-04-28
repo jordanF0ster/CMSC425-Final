@@ -8,18 +8,19 @@ using UnityEngine;
 public class MoveCamera : MonoBehaviour
 {
 
-    public Blaster target;
+    public Player target;
+    public Vector3 dist;
+    float speed = 5;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //dist = transform.position - target.transform.position;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 fwd = target.transform.forward * target.shootDist;
-        Vector3 lookPos = target.transform.position + fwd;
-        transform.LookAt(lookPos);
+        transform.position = Vector3.Lerp(transform.position, target.transform.position + dist, speed * Time.deltaTime);
+        transform.LookAt(target.transform);
     }
 }

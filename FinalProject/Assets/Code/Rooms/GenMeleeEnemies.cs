@@ -7,7 +7,7 @@ public class GenMeleeEnemies : MonoBehaviour
     public MoveToPlayer enemyToSpawn;
     public Player player;
     MoveToPlayer[] enemies;
-    int numEnemies = 5;
+    public int numEnemies = 5;
     float x;
     float y;
     float z;
@@ -17,14 +17,21 @@ public class GenMeleeEnemies : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // here is where the player and enemies for the room are generated
         enemies = new MoveToPlayer[numEnemies];
-        Player playerGo = Instantiate(player, new Vector3(0, 2, 0), Quaternion.identity);
-        //Instantiate(player, new Vector3(0, 2, 0), Quaternion.identity);
-        float xMin = transform.position.x - xSpawnWidth;
-        float xMax = transform.position.x + xSpawnWidth;
-        float zMin = transform.position.z + 20;
-        float zMax = transform.position.z + 35;
-        spawnEnemies(numEnemies, xMin, xMax, zMin, zMax, playerGo);
+        if (player != null)
+        {
+            Player playerGo = Instantiate(player, new Vector3(0, 1, 0), Quaternion.identity);
+            MoveCamera cam = Camera.main.GetComponent<MoveCamera>();
+            cam.target = playerGo;
+            cam.dist = cam.transform.position - player.getPos();
+
+            float xMin = transform.position.x - xSpawnWidth;
+            float xMax = transform.position.x + xSpawnWidth;
+            float zMin = transform.position.z + 20;
+            float zMax = transform.position.z + 35;
+            spawnEnemies(numEnemies, xMin, xMax, zMin, zMax, playerGo);
+        }
     }
 
     // Update is called once per frame
@@ -60,6 +67,7 @@ public class GenMeleeEnemies : MonoBehaviour
         return true;
     }
 
+    // here we instantiate num number of enemies in a random position that fits within [xMinRange,xMaxRange] and [zMinRange, zMaxRange] inclusively
     public void spawnEnemies(int num, float xMinRange, float xMaxRange, float zMinRange, float zMaxRange, Player target)
     {
         enemies = new MoveToPlayer[num];
@@ -68,12 +76,10 @@ public class GenMeleeEnemies : MonoBehaviour
             // NOTE: this assumes that it faces along the Z axis, if rotated then need to change
             // as a result all rooms should be aligned facing positive z axis
             x = Random.Range(xMinRange, xMaxRange);
-            y = 2;
+            y = 1;
             z = Random.Range(zMinRange, zMaxRange);
             pos = new Vector3(x, y, z);
             MoveToPlayer enemy = Instantiate(enemyToSpawn, pos, Quaternion.identity);
-            //enemy.transform.parent = this.transform;
-            //enemy.transform.position = pos;
             enemy.player = target;
             enemies[i] = enemy;
         }
