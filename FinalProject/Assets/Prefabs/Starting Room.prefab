@@ -110,9 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547e86177e1be4401bacab4beb6c9d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 8548872925107687480, guid: 4e6fe59c39021436ea67279f3a27f3a5,
+  enemyToSpawn: {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5,
     type: 3}
   player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
+  numEnemies: 5
 --- !u!1 &3592034545471681765
 GameObject:
   m_ObjectHideFlags: 0

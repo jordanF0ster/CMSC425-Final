@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GenMeleeEnemies : MonoBehaviour
 {
-    public MoveToPlayer enemyToSpawn;
+    public Enemy enemyToSpawn;
     public Player player;
-    MoveToPlayer[] enemies;
+    Enemy[] enemies;
     public int numEnemies = 5;
     float x;
     float y;
@@ -18,7 +18,7 @@ public class GenMeleeEnemies : MonoBehaviour
     void Start()
     {
         // here is where the player and enemies for the room are generated
-        enemies = new MoveToPlayer[numEnemies];
+        enemies = new Enemy[numEnemies];
         if (player != null)
         {
             Player playerGo = Instantiate(player, new Vector3(0, 1, 0), Quaternion.identity);
@@ -39,7 +39,7 @@ public class GenMeleeEnemies : MonoBehaviour
     {
         if (checkIfAllMarked())
         {
-            foreach (MoveToPlayer e in enemies)
+            foreach (Enemy e in enemies)
             {
                 if (e != null)
                     Destroy(e.gameObject);
@@ -52,7 +52,7 @@ public class GenMeleeEnemies : MonoBehaviour
         if (enemies.Length == 0)
             return false;
 
-        foreach (MoveToPlayer enemy in enemies)
+        foreach (Enemy enemy in enemies)
         {
             if (enemy != null)
             {
@@ -70,7 +70,7 @@ public class GenMeleeEnemies : MonoBehaviour
     // here we instantiate num number of enemies in a random position that fits within [xMinRange,xMaxRange] and [zMinRange, zMaxRange] inclusively
     public void spawnEnemies(int num, float xMinRange, float xMaxRange, float zMinRange, float zMaxRange, Player target)
     {
-        enemies = new MoveToPlayer[num];
+        enemies = new Enemy[num];
         for (int i = 0; i < num; i++)
         {
             // NOTE: this assumes that it faces along the Z axis, if rotated then need to change
@@ -79,7 +79,7 @@ public class GenMeleeEnemies : MonoBehaviour
             y = 1;
             z = Random.Range(zMinRange, zMaxRange);
             pos = new Vector3(x, y, z);
-            MoveToPlayer enemy = Instantiate(enemyToSpawn, pos, Quaternion.identity);
+            Enemy enemy = Instantiate(enemyToSpawn, pos, Quaternion.identity);
             enemy.player = target;
             enemies[i] = enemy;
         }

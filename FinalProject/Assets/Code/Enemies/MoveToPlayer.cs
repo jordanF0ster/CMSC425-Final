@@ -10,23 +10,26 @@ public class MoveToPlayer : MonoBehaviour
 {
 
     public float speed = 5f;
-    public Player player;
+    //Player player;
     public float rotationSpeed;
+    Enemy e;
     //float health = 5;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        e = this.GetComponent<Enemy>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player.getPos());
-        transform.position += transform.forward * speed * Time.deltaTime;
-
-        float dist = Vector3.Distance(player.transform.position, transform.position);
+        if (e != null && e.player != null)
+        {
+            transform.LookAt(e.player.getPos());
+            transform.position += transform.forward * speed * Time.deltaTime;
+        }
+        //float dist = Vector3.Distance(e.player.transform.position, transform.position);
         //Debug.Log(dist);
         //if (dist < 1)
         //{
@@ -36,11 +39,11 @@ public class MoveToPlayer : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.name);
+        //Debug.Log(collision.collider.name);
         if (collision.collider.name == "Player" || collision.collider.name == "Blaster")
         {
             Debug.Log("HIT");
-            player.damage(1);
+            e.player.damage(1);
         }
     }
 }
