@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GenMeleeEnemies : MonoBehaviour
 {
-    public Enemy enemyToSpawn;
-    public Player player;
-    Enemy[] enemies;
-    public int numEnemies = 5;
+    public Enemy[] enemiesToSpawn; // all enemies to be spawned in a room
+    public Player player; // target
+    Enemy[] enemies; // house all enmies
+    int numEnemies; // num enemies total
+    public int[] numEnemiesType; // array of num enemies per type
     float x;
     float y;
     float z;
@@ -18,7 +19,12 @@ public class GenMeleeEnemies : MonoBehaviour
     void Start()
     {
         // here is where the player and enemies for the room are generated
+
+        foreach (int x in numEnemiesType)
+            numEnemies += x;
+
         enemies = new Enemy[numEnemies];
+
         if (player != null)
         {
             Player playerGo = Instantiate(player, new Vector3(0, 1, 0), Quaternion.identity);
@@ -30,7 +36,7 @@ public class GenMeleeEnemies : MonoBehaviour
             float xMax = transform.position.x + xSpawnWidth;
             float zMin = transform.position.z + 20;
             float zMax = transform.position.z + 35;
-            spawnEnemies(numEnemies, xMin, xMax, zMin, zMax, playerGo);
+            spawnEnemies(enemiesToSpawn, numEnemiesType, xMin, xMax, zMin, zMax, playerGo);
         }
     }
 
@@ -68,9 +74,9 @@ public class GenMeleeEnemies : MonoBehaviour
     }
 
     // here we instantiate num number of enemies in a random position that fits within [xMinRange,xMaxRange] and [zMinRange, zMaxRange] inclusively
-    public void spawnEnemies(int num, float xMinRange, float xMaxRange, float zMinRange, float zMaxRange, Player target)
+    public void spawnEnemyType(Enemy toSpawn, int num, float xMinRange, float xMaxRange, float zMinRange, float zMaxRange, Player target, int lstStartPos)
     {
-        enemies = new Enemy[num];
+        //enemies = new Enemy[num];
         for (int i = 0; i < num; i++)
         {
             // NOTE: this assumes that it faces along the Z axis, if rotated then need to change
@@ -79,9 +85,24 @@ public class GenMeleeEnemies : MonoBehaviour
             y = 1;
             z = Random.Range(zMinRange, zMaxRange);
             pos = new Vector3(x, y, z);
-            Enemy enemy = Instantiate(enemyToSpawn, pos, Quaternion.identity);
+            Enemy enemy = Instantiate(toSpawn, pos, Quaternion.identity);
             enemy.player = target;
-            enemies[i] = enemy;
+            enemies[lstStartPos] = enemy;
+            lstStartPos++;
+        }
+    }
+
+    // spawns num number of enemies from enemies array
+    public void spawnEnemies(Enemy[] enemiesLst, int[] num, float xMinRange, float xMaxRange, float zMinRange, float zMaxRange, Player target)
+    {
+        if (enemiesLst.Length != num.Length)
+            return;
+
+        int lstStartPos = 0;
+        for (int i = 0; i < enemiesLst.Length; i++)
+        {
+            spawnEnemyType(enemiesLst[i], num[i], xMinRange, xMaxRange, zMinRange, zMaxRange, target, lstStartPos);
+            lstStartPos += num[i];
         }
     }
 }
