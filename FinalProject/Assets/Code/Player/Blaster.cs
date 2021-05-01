@@ -8,11 +8,12 @@ public class Blaster : MonoBehaviour
     public Transform tip;
     public float shootDist = 20;
     private LineRenderer line;
+    private AudioSource source;
 
     void Start()
     {
         line = GetComponent<LineRenderer>();
-
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -21,6 +22,7 @@ public class Blaster : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             StartCoroutine(shoot());
+            source.Play();
         }
     }
 

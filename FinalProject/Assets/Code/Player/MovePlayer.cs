@@ -19,12 +19,14 @@ public class MovePlayer : MonoBehaviour
     private LineRenderer line;
     Vector3 move;
     Vector3 pos;
+    private AudioSource source;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         line = GetComponent<LineRenderer>();
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,6 +51,7 @@ public class MovePlayer : MonoBehaviour
         movePlayer(move);
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            source.Play();
             StartCoroutine(dash());
         }
     }
