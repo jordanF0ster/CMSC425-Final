@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4965919603963782096}
   - component: {fileID: 771754445506521524}
   - component: {fileID: 6714677480183516545}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 3295846859258038540}
   - component: {fileID: 1130228447597681775}
   - component: {fileID: 3061002809135022204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 1903470867257521102}
   - component: {fileID: 2880367033060418783}
   - component: {fileID: 939360995641916341}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 8562495900851376512}
   - component: {fileID: 5573467134748681482}
   - component: {fileID: 595987310151286740}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 7676251469918446255}
   - component: {fileID: 1440260625266721573}
   - component: {fileID: 4602731431734831312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Starting Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 5974994088776793952}
   - component: {fileID: 1221044969846225085}
   - component: {fileID: 5449242632359419169}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

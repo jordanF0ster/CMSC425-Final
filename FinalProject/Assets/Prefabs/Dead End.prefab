@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1549158203348121657}
   - component: {fileID: 311945343368681972}
   - component: {fileID: 2933523531343196410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 1006720434280900915}
   - component: {fileID: 59828835537379292}
   - component: {fileID: 6109420052706957774}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,8 +198,8 @@ GameObject:
   - component: {fileID: 4923052459605915289}
   - component: {fileID: 1475325038500162230}
   - component: {fileID: 5860426808939055441}
-  m_Layer: 0
-  m_Name: Hallway (3)
+  m_Layer: 8
+  m_Name: Dead End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 1305943135609782139}
   - component: {fileID: 5303867125696566449}
   - component: {fileID: 6113208550208687503}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

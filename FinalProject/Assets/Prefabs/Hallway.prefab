@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2580175010124245895}
   - component: {fileID: 8351298713807583144}
   - component: {fileID: 3947623338047362127}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hallway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7666317637539296301}
   - component: {fileID: 7442237567084266178}
   - component: {fileID: 3699047986200364240}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 7806551355895606060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: 2.5, z: 0}
-  m_LocalScale: {x: 1.6, y: 5, z: 10}
+  m_LocalScale: {x: 1.6667, y: 5, z: 10}
   m_Children: []
   m_Father: {fileID: 2342259454796142284}
   m_RootOrder: 1
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 8278489733648459047}
   - component: {fileID: 7190257405013525738}
   - component: {fileID: 5704184665902034404}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ Transform:
   m_GameObject: {fileID: 7948217274376623913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: 2.5, z: 0}
-  m_LocalScale: {x: 1.6, y: 5, z: 10}
+  m_LocalScale: {x: 1.6667, y: 5, z: 10}
   m_Children: []
   m_Father: {fileID: 2342259454796142284}
   m_RootOrder: 0

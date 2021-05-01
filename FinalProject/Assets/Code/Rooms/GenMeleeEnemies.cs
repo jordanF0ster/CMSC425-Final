@@ -22,6 +22,7 @@ public class GenMeleeEnemies : MonoBehaviour
         if (player != null)
         {
             Player playerGo = Instantiate(player, new Vector3(0, 1, 0), Quaternion.identity);
+            playerGo.gameObject.tag = "PlayerGo";
             MoveCamera cam = Camera.main.GetComponent<MoveCamera>();
             cam.target = playerGo;
             cam.dist = cam.transform.position - player.getPos();
