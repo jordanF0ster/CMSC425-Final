@@ -28,8 +28,8 @@ public class GenMeleeEnemies : MonoBehaviour
 
             float xMin = transform.position.x - xSpawnWidth;
             float xMax = transform.position.x + xSpawnWidth;
-            float zMin = transform.position.z + 20;
-            float zMax = transform.position.z + 35;
+            float zMin = transform.position.z + 2;
+            float zMax = transform.position.z + 3.5f;
             spawnEnemies(numEnemies, xMin, xMax, zMin, zMax, playerGo);
         }
     }
