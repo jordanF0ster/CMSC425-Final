@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
-    float yAxisRotation = 0;
     public float speed = 10f; // movement speed
     public float sensitivity = 100; // camera sensitivity
 
@@ -59,12 +58,10 @@ public class MovePlayer : MonoBehaviour
     // for better collisions
     void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log(collision.gameObject.name);
         if (collision.gameObject.name == "Starting Room")
         {
             rb.velocity = Vector3.zero;
         }
-        //rb.velocity = Vector3.zero;
     }
 
     // Dash forward by translating position then setting velocity to 0
@@ -82,16 +79,10 @@ public class MovePlayer : MonoBehaviour
 
 
         line.SetPosition(0, transform.position);
-        //Vector3 newPos = transform.position + (dashDirection * dashSpeed);
         float oldSpeed = speed;
         speed = dashSpeed;
         yield return new WaitForSeconds(0.1f);
         speed = oldSpeed;
-        //line.SetPosition(0, transform.position);
-
-
-        //transform.position += dashDirection * dashSpeed;
-        
 
         line.SetPosition(1, transform.position);
         rb.velocity = Vector3.zero;

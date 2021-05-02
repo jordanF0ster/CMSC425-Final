@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   markedMaterial: {fileID: 2100000, guid: afd85d3228673454f896171bedc11a64, type: 2}
+  player: {fileID: 0}
 --- !u!114 &8548872925107687480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,8 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3765c097166f24863987e03c9da23f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  player: {fileID: 0}
+  speed: 3
   rotationSpeed: 0
 --- !u!54 &-4331773153468470720
 Rigidbody:
