@@ -12,11 +12,12 @@ public class Enemy : MonoBehaviour
     MeshRenderer mesh;
     public Material markedMaterial;
     public Player player;
-
+    PauseManager pm;
     // Start is called before the first frame update
     void Start()
     {
         mesh = gameObject.GetComponent<MeshRenderer>();
+        pm = player.GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class Enemy : MonoBehaviour
 
     public void mark()
     {
-        if (!marked)
+        if (!marked && !pm.isPaused())
         {
             marked = true;
             mesh.material.color = markedMaterial.color;

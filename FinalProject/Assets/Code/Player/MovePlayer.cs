@@ -20,29 +20,35 @@ public class MovePlayer : MonoBehaviour
     Vector3 pos;
     private AudioSource source;
 
+    PauseManager pm;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         line = GetComponent<LineRenderer>();
         source = GetComponent<AudioSource>();
+        pm = GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // have player look at mouse by pointing ray in direction
-        Vector3 mousePos = Input.mousePosition;
-        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hit;
-        if (Physics.Raycast(mouseRay, out hit))
+        if (!pm.isPaused())
         {
-            Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-            transform.LookAt(target);
-        }
+            // have player look at mouse by pointing ray in direction
+            Vector3 mousePos = Input.mousePosition;
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            RaycastHit hit;
+            if (Physics.Raycast(mouseRay, out hit))
+            {
+                Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                transform.LookAt(target);
+            }
+
+            move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        }
     }
 
     void FixedUpdate()

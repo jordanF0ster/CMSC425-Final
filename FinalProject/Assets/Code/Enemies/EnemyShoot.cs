@@ -9,18 +9,20 @@ public class EnemyShoot : MonoBehaviour
     private LineRenderer line;
     bool isShooting = false;
     Enemy e;
+    PauseManager pm;
 
     // Start is called before the first frame update
     void Start()
     {
         line = GetComponent<LineRenderer>();
         e = GetComponent<Enemy>();
+        PauseManager pm = e.player.GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isShooting)
+        if (!isShooting && !pm.isPaused())
             StartCoroutine(shoot());
     }
 
@@ -53,7 +55,7 @@ public class EnemyShoot : MonoBehaviour
         {
             Player player = hit.collider.GetComponent<Player>();
             line.SetPosition(1, hit.point);
-            if (player != null)
+            if (player != null && !pm.isPaused())
             {
                 player.damage(1);
             }

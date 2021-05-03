@@ -12,7 +12,7 @@ public class MoveRanged : MonoBehaviour
     float closeDist = 10f;
     float startHeight;
     float weaponRange;
-
+    PauseManager pm;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,23 +20,26 @@ public class MoveRanged : MonoBehaviour
         e = this.GetComponent<Enemy>();
         dist = transform.position - e.player.transform.position;
         startHeight = transform.position.y;
+
         EnemyShoot es = GetComponent<EnemyShoot>();
         if (es != null)
             weaponRange = es.getRange();
+
+        pm = e.player.GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = Vector3.zero;
-        //if (Vector3.Distance(e.player.transform.position, transform.position) < closeDist)
-        //{
-        maintainDist();
-        //}
-        pointAtPlayer();
+        if (!pm.isPaused())
+        {
+            rb.velocity = Vector3.zero;
+            maintainDist();
+            pointAtPlayer();
 
-        if (transform.position.y != startHeight)
-            maintainHeight();
+            if (transform.position.y != startHeight)
+                maintainHeight();
+        }
     }
 
     private void pointAtPlayer()

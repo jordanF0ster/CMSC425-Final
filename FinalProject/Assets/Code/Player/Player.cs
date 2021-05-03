@@ -6,18 +6,20 @@ public class Player : MonoBehaviour
 {
 
     int health = 5;
-    public HealthManager manager; 
+    public HealthManager manager;
+    PauseManager pm;
 
     // Start is called before the first frame update
     void Start()
     {
         manager?.showHearts(health);
+        pm = GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || health <= 0)
+        if (health <= 0)
         {
             Debug.Log("YOU ARE DEAD");
 #if UNITY_EDITOR

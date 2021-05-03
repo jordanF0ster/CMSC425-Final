@@ -9,17 +9,20 @@ public class Blaster : MonoBehaviour
     public float shootDist = 20;
     private LineRenderer line;
     private AudioSource source;
+    PauseManager pm;
+
 
     void Start()
     {
         line = GetComponent<LineRenderer>();
         source = GetComponent<AudioSource>();
+        pm = GameObject.FindGameObjectWithTag("PlayerGo").GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !pm.isPaused())
         {
             StartCoroutine(shoot());
             source.Play();
@@ -41,7 +44,7 @@ public class Blaster : MonoBehaviour
         {
             Enemy enemy = hit.collider.GetComponent<Enemy>();
             line.SetPosition(1, hit.point);
-            if (enemy != null)
+            if (enemy != null && !pm.isPaused())
             {
                 enemy.mark();
             }
