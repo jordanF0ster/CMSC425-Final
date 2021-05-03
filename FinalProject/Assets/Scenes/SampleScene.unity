@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 646812995}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: MainCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1301,6 +1301,7 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
   numEnemies: 5
+  manager: {fileID: 1740372071465001925, guid: bce2adf294a584215a51cc59b0469c78, type: 3}
 --- !u!1001 &1147309352
 PrefabInstance:
   m_ObjectHideFlags: 0

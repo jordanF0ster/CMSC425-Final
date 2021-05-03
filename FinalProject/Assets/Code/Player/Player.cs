@@ -5,12 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    float health = 5;
+    int health = 5;
+    public HealthManager manager; 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        manager?.showHearts(health);
     }
 
     // Update is called once per frame
@@ -43,7 +44,8 @@ public class Player : MonoBehaviour
     {
         Debug.Log("DAMAGE");
         health -= x;
-        
+
+        manager?.showHearts(health);
         //yield return new WaitForSeconds(1);
     }
 

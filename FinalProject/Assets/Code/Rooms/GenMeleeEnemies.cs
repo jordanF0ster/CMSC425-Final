@@ -6,13 +6,17 @@ public class GenMeleeEnemies : MonoBehaviour
 {
     public Enemy enemyToSpawn;
     public Player player;
+
     Enemy[] enemies;
     public int numEnemies = 5;
+
     float x;
     float y;
     float z;
     Vector3 pos;
     int xSpawnWidth = 15;
+
+    public HealthManager manager;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +25,7 @@ public class GenMeleeEnemies : MonoBehaviour
         enemies = new Enemy[numEnemies];
         if (player != null)
         {
-            Player playerGo = Instantiate(player, new Vector3(0, 1, 0), Quaternion.identity);
-            playerGo.gameObject.tag = "PlayerGo";
-            MoveCamera cam = Camera.main.GetComponent<MoveCamera>();
-            cam.target = playerGo;
-            cam.dist = cam.transform.position - player.getPos();
+            Player playerGo = setUpPlayer();
 
             float xMin = transform.position.x - xSpawnWidth;
             float xMax = transform.position.x + xSpawnWidth;
@@ -84,5 +84,20 @@ public class GenMeleeEnemies : MonoBehaviour
             enemy.player = target;
             enemies[i] = enemy;
         }
+    }
+
+    private Player setUpPlayer()
+    {
+        Player playerGo = Instantiate(player, new Vector3(0, 1, 0), Quaternion.identity);
+        playerGo.gameObject.tag = "PlayerGo";
+        MoveCamera cam = Camera.main.GetComponent<MoveCamera>();
+        cam.target = playerGo;
+        cam.dist = cam.transform.position - player.getPos();
+
+        Canvas canvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<Canvas>();
+        manager = Instantiate(manager, canvas.transform);
+        playerGo.manager = manager;
+
+        return playerGo;
     }
 }
