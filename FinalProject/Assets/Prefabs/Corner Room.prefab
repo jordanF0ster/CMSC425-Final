@@ -196,7 +196,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4730223533462540587}
   - component: {fileID: 2638945658784017492}
-  - component: {fileID: 178930946708944644}
   - component: {fileID: 3459015014341260614}
   m_Layer: 0
   m_Name: GameObject (1)
@@ -232,22 +231,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 5, z: 7}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &178930946708944644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142230176207326283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a846eea786a345d9bc47203012b6641, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5,
-    type: 3}
-  player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
-  numEnemies: 5
 --- !u!54 &3459015014341260614
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -655,7 +638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5017965928573575838}
   - component: {fileID: 7804909487820947775}
-  - component: {fileID: 1485214485514313425}
+  - component: {fileID: 4727291740048908068}
   - component: {fileID: 589918112651842967}
   m_Layer: 0
   m_Name: GameObject
@@ -691,7 +674,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 5, z: 7}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1485214485514313425
+--- !u!114 &4727291740048908068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -700,13 +683,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8057907874503901803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a846eea786a345d9bc47203012b6641, type: 3}
+  m_Script: {fileID: 11500000, guid: 1313563514f08453a9a6160b389577fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5,
-    type: 3}
+  enemiesToSpawn:
+  - {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5, type: 3}
   player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
-  numEnemies: 5
+  numEnemiesType: 05000000
 --- !u!54 &589918112651842967
 Rigidbody:
   m_ObjectHideFlags: 0

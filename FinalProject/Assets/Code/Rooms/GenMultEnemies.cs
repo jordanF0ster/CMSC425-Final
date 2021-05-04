@@ -16,8 +16,12 @@ public class GenMultEnemies : MonoBehaviour
     float y;
     float z;
     Vector3 pos;
-    int xSpawnWidth = 15;
     bool spawn = true;
+
+    public float xMin;
+    public float xMax;
+    public float zMin;
+    public float zMax;
 
     // Start is called before the first frame update
     void Start()
@@ -112,10 +116,6 @@ public class GenMultEnemies : MonoBehaviour
         if (spawn && player != null)
         {
             Debug.Log("HIT@: " + player);
-            float xMin = transform.position.x - xSpawnWidth;
-            float xMax = transform.position.x + xSpawnWidth;
-            float zMin = transform.position.z + 2;
-            float zMax = transform.position.z + 3.5f;
             spawnEnemies(enemiesToSpawn, numEnemiesType, xMin, xMax, zMin, zMax, player);
             spawn = false;
         }

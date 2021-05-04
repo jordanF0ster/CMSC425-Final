@@ -488,6 +488,7 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
   numEnemies: 5
+  manager: {fileID: 1740372071465001925, guid: bce2adf294a584215a51cc59b0469c78, type: 3}
 --- !u!1 &5941831168355197050
 GameObject:
   m_ObjectHideFlags: 0
