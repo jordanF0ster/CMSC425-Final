@@ -16,7 +16,7 @@ public class EnemyShoot : MonoBehaviour
     {
         line = GetComponent<LineRenderer>();
         e = GetComponent<Enemy>();
-        PauseManager pm = e.player.GetComponent<PauseManager>();
+        pm = e.player.GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
