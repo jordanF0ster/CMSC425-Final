@@ -43,6 +43,15 @@ public class Blaster : MonoBehaviour
         if (Physics.Raycast(transform.position, fwd, out hit, shootDist))
         {
             Enemy enemy = hit.collider.GetComponent<Enemy>();
+            //Debug.Log("EE " + enemy);
+            //enemy.mark();
+            //BossEnemy boss;
+
+            //if (enemy == null)
+            //{
+            //    boss = hit.collider.GetComponent<BossEnemy>();
+            //}
+
             line.SetPosition(1, hit.point);
             if (enemy != null && !pm.isPaused())
             {
