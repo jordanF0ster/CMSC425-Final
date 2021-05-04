@@ -16,6 +16,7 @@ public class GenMultEnemies : MonoBehaviour
     float y;
     float z;
     Vector3 pos;
+    int xSpawnWidth = 15;
     bool spawn = true;
 
     public float xMin;
@@ -116,6 +117,7 @@ public class GenMultEnemies : MonoBehaviour
         if (spawn && player != null)
         {
             Debug.Log("HIT@: " + player);
+
             spawnEnemies(enemiesToSpawn, numEnemiesType, xMin, xMax, zMin, zMax, player);
             spawn = false;
         }
