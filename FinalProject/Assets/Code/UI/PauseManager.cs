@@ -22,14 +22,17 @@ public class PauseManager : MonoBehaviour
     }
 
     // pauses game
-    private void pauseGame()
+    private void pauseGame(bool showMenu)
     {
         if (!paused)
         {
             canvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<Canvas>();
             Time.timeScale = 0f;
-            instMenu = Instantiate(menu, canvas.transform);
-            instMenu.setPauseManager(this);
+            if (showMenu)
+            {
+                instMenu = Instantiate(menu, canvas.transform);
+                instMenu.setPauseManager(this);
+            }
         }
         else
         {
@@ -45,7 +48,7 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pauseGame();
+            pauseGame(true);
         }
     }
 
@@ -57,8 +60,13 @@ public class PauseManager : MonoBehaviour
     // only triggered from pause menu
     public void pauseGameFromMenu(PauseMenu menu)
     {
-        pauseGame();
+        pauseGame(true);
         Destroy(menu.gameObject);
+    }
+
+    public void pauseByDeath()
+    {
+        pauseGame(false);
     }
 
     // quits game entirely

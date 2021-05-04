@@ -13,17 +13,17 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        resumeButton = GameObject.FindGameObjectWithTag("PauseResumeButton").GetComponent<Button>();
-        quitButton = GameObject.FindGameObjectWithTag("PauseQuitButton").GetComponent<Button>();
-        foreach (Transform child in transform)
-        {
-            //child is your child transform
-            //print("CCC: " + child);
-            if (child.tag == "PauseResumeButton")
-                resumeButton = child.GetComponent<Button>();
-            if (child.tag == "PauseQuitButton")
-                quitButton = child.GetComponent<Button>();
-        }
+        //resumeButton = GameObject.FindGameObjectWithTag("PauseResumeButton").GetComponent<Button>();
+        //quitButton = GameObject.FindGameObjectWithTag("PauseQuitButton").GetComponent<Button>();
+        //foreach (Transform child in transform)
+        //{
+        //    //child is your child transform
+        //    //print("CCC: " + child);
+        //    if (child.tag == "PauseResumeButton")
+        //        resumeButton = child.GetComponent<Button>();
+        //    if (child.tag == "PauseQuitButton")
+        //        quitButton = child.GetComponent<Button>();
+        //}
     }
 
     // Update is called once per frame

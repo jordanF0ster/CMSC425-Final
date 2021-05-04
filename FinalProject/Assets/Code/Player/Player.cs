@@ -8,24 +8,30 @@ public class Player : MonoBehaviour
     int health = 5;
     public HealthManager manager;
     PauseManager pm;
+    DeathManager dm;
+    bool dead = false;
 
     // Start is called before the first frame update
     void Start()
     {
         manager?.showHearts(health);
         pm = GetComponent<PauseManager>();
+        dm = GetComponent<DeathManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && !dead)
         {
-            Debug.Log("YOU ARE DEAD");
-#if UNITY_EDITOR
-#else
-            Application.Quit();
-#endif
+            dm?.showMenu();
+            dead = true;
+
+//            Debug.Log("YOU ARE DEAD");
+//#if UNITY_EDITOR
+//#else
+//            Application.Quit();
+//#endif
         }
     }
 
@@ -51,5 +57,10 @@ public class Player : MonoBehaviour
     public Vector3 getPos()
     {
         return transform.position;
+    }
+
+    public bool isDead()
+    {
+        return dead;
     }
 }
