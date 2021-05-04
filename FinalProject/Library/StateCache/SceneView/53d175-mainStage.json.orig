@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":-74.0963363647461,"y":14.68510627746582,"z":-7.597391128540039},"rotation":{"x":-0.3684794306755066,"y":-0.3107917308807373,"z":0.13251495361328126,"w":-0.8661940097808838},"size":1.9194222688674927,"orthographic":false}
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":54.79999542236328,"y":2.5,"z":79.29000091552735},"rotation":{"x":-0.2266281247138977,"y":-0.6733668446540833,"z":0.23008061945438386,"w":-0.665229082107544},"size":19.85213851928711,"orthographic":false}
+>>>>>>> Nathan
