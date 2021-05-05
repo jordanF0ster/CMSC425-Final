@@ -30,12 +30,11 @@ public class Player : MonoBehaviour
         {
             dm?.showMenu();
             dead = true;
+        }
 
-//            Debug.Log("YOU ARE DEAD");
-//#if UNITY_EDITOR
-//#else
-//            Application.Quit();
-//#endif
+        if (transform.position.y < 0 && !dead)
+        {
+            damage(health);
         }
     }
 
