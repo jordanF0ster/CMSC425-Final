@@ -17,7 +17,7 @@ public class GenMeleeEnemies : MonoBehaviour
     int xSpawnWidth = 15;
 
     public HealthManager manager;
-
+    public GameObject wall;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +40,7 @@ public class GenMeleeEnemies : MonoBehaviour
     {
         if (checkIfAllMarked())
         {
+            Destroy(wall);
             foreach (Enemy e in enemies)
             {
                 if (e != null)

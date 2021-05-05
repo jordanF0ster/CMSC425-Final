@@ -23,7 +23,11 @@ public class GenMultEnemies : MonoBehaviour
     public float xMax;
     public float zMin;
     public float zMax;
+    public GameObject wall;
 
+    GameObject[] walls = new GameObject[2];
+    public float wallCoordx;
+    public float wallCoordz;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +44,11 @@ public class GenMultEnemies : MonoBehaviour
     {
         if (checkIfAllMarked())
         {
+            foreach (GameObject g in walls) {
+                if (g != null) {
+                    Destroy(g.gameObject);
+                }
+            }
             foreach (Enemy e in enemies)
             {
                 if (e != null)
@@ -101,7 +110,7 @@ public class GenMultEnemies : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerExit(Collider other)
     {
 
         //Debug.Log(other.gameObject.tag);
@@ -109,17 +118,19 @@ public class GenMultEnemies : MonoBehaviour
         if (other.gameObject != null && other.gameObject.tag == "PlayerGo")
         {
             player = other.gameObject.GetComponent<Player>();
-        }
+            if (spawn) {
+                Debug.Log("HIT@: " + player);
+                spawnEnemies(enemiesToSpawn, numEnemiesType, xMin, xMax, zMin, zMax, player);
+                spawn = false;
 
+                Quaternion rotate = Quaternion.Euler(0, 90, 0);
+                GameObject wall1 = Instantiate(wall, new Vector3((xMax + xMin)/2, 2.5f, wallCoordz + 1.5f), rotate);
+                GameObject wall2 = Instantiate(wall, new Vector3(wallCoordx + 1.5f, 2.5f, (zMax + zMin)/2), Quaternion.identity);
+                walls[0] = wall1;
+                walls[1] = wall2;
+            }
+        }
 
         //Debug.Log("Collsion detectedVVVVV");
-
-        if (spawn && player != null)
-        {
-            Debug.Log("HIT@: " + player);
-
-            spawnEnemies(enemiesToSpawn, numEnemiesType, xMin, xMax, zMin, zMax, player);
-            spawn = false;
-        }
     }
 }
