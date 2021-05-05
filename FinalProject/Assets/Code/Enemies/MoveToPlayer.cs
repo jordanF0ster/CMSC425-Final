@@ -33,7 +33,6 @@ public class MoveToPlayer : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log(collision.collider.name);
         if (collision.collider.name == "Player" || collision.collider.name == "Blaster" && !pm.isPaused())
         {
             Debug.Log("HIT");

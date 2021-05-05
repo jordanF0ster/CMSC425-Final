@@ -78,7 +78,7 @@ public class GenMeleeEnemies : MonoBehaviour
             // NOTE: this assumes that it faces along the Z axis, if rotated then need to change
             // as a result all rooms should be aligned facing positive z axis
             x = Random.Range(xMinRange, xMaxRange);
-            y = 1;
+            y = 2;
             z = Random.Range(zMinRange, zMaxRange);
             pos = new Vector3(x, y, z);
             Enemy enemy = Instantiate(enemyToSpawn, pos, Quaternion.identity);
