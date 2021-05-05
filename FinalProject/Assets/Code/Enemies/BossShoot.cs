@@ -41,7 +41,6 @@ public class BossShoot : MonoBehaviour
         if (isShooting)
             yield break;
 
-        Debug.Log("SHOT");
         isShooting = true;
 
         Vector3 ePos = e.player.getPos();

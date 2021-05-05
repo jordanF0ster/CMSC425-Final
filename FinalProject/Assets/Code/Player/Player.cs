@@ -47,7 +47,6 @@ public class Player : MonoBehaviour
 
     public void damage(int x)
     {
-        Debug.Log("DAMAGE");
         health -= x;
 
         manager?.showHearts(health);

@@ -41,7 +41,6 @@ public class EnemyShoot : MonoBehaviour
         if (isShooting)
             yield break;
 
-        Debug.Log("SHOT");
         isShooting = true;
 
 
