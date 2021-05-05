@@ -10,6 +10,7 @@ public class EnemyShoot : MonoBehaviour
     bool isShooting = false;
     Enemy e;
     PauseManager pm;
+    private AudioSource shootSound;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class EnemyShoot : MonoBehaviour
         line = GetComponent<LineRenderer>();
         e = GetComponent<Enemy>();
         pm = e.player.GetComponent<PauseManager>();
+        shootSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,12 +39,13 @@ public class EnemyShoot : MonoBehaviour
     // then the line changes color to signify it shooting.
     public IEnumerator shoot()
     {
-        line.enabled = true;
+        
         if (isShooting)
             yield break;
 
+        line.enabled = true;
         isShooting = true;
-
+        shootSound.Play();
 
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
         RaycastHit hit;
