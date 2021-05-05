@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public HealthManager manager;
     PauseManager pm;
     DeathManager dm;
+    private AudioSource[] sources;
+    private AudioSource hitSound;
     bool dead = false;
 
     // Start is called before the first frame update
@@ -16,6 +18,8 @@ public class Player : MonoBehaviour
     {
         manager?.showHearts(health);
         pm = GetComponent<PauseManager>();
+        sources = GetComponents<AudioSource>();
+        hitSound = sources[1];
         dm = GetComponent<DeathManager>();
     }
 
@@ -48,7 +52,7 @@ public class Player : MonoBehaviour
     public void damage(int x)
     {
         health -= x;
-
+        hitSound.Play();
         manager?.showHearts(health);
         //yield return new WaitForSeconds(1);
     }
