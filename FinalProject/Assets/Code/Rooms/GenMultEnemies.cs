@@ -53,7 +53,7 @@ public class GenMultEnemies : MonoBehaviour
                 }
             }
             foreach (Enemy e in enemies)
-            {
+            {   
                 if (e != null)
                     Destroy(e.gameObject);
             }
@@ -124,7 +124,7 @@ public class GenMultEnemies : MonoBehaviour
             if (entered.enteredRoom == false) {
                 entered.enteredRoom = true;
                 Debug.Log("HIT@: " + player);
-                spawnEnemies(enemiesToSpawn, numEnemiesType, xMin, xMax, zMin, zMax, player);
+                spawnEnemies(enemiesToSpawn, numEnemiesType, xMin + 4, xMax - 4, zMin + 4, zMax - 4, player);
                 Quaternion rotate = Quaternion.Euler(0, 90, 0);
                 GameObject wall1 = Instantiate(wall, new Vector3((xMax + xMin)/2, 2.5f, wallCoordz + 1.5f), rotate);
                 GameObject wall2 = Instantiate(wall, new Vector3(wallCoordx + 1.5f, 2.5f, (zMax + zMin)/2), Quaternion.identity);

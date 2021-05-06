@@ -26,6 +26,9 @@ public class GenBossRoom : MonoBehaviour
     public float zMin;
     public float zMax;
 
+    public GameObject wall;
+    public EnterRoom entered;
+
     //float x;
     //float y;
     //float z;
@@ -88,30 +91,32 @@ public class GenBossRoom : MonoBehaviour
         return boss.isMarked();
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerExit(Collider other)
     {
 
         if (other.gameObject != null && other.gameObject.tag == "PlayerGo")
         {
             player = other.gameObject.GetComponent<Player>();
+            if (entered.enteredRoom == false) {
+                entered.enteredRoom = true;
+                spawnEnemies(enemiesToSpawn, numEnemiesType, xMin, xMax, zMin, zMax, player);
+
+                Quaternion rotate = Quaternion.Euler(0, 90, 0);
+                Instantiate(wall, new Vector3((xMin + xMax)/2, 2.5f, zMin - 1.5f), rotate);
+
+                x = Random.Range(xMin, xMax);
+                y = 2;
+                z = Random.Range(zMin, zMax);
+                pos = new Vector3(x, y, z);
+                boss = Instantiate(boss, pos, Quaternion.identity);
+                boss.player = player;
+
+                spawn = false;
+            }
         }
 
 
         //Debug.Log("Collsion detectedVVVVV");
-
-        if (spawn && player != null)
-        {
-            spawnEnemies(enemiesToSpawn, numEnemiesType, xMin, xMax, zMin, zMax, player);
-
-            x = Random.Range(xMin, xMax);
-            y = 2;
-            z = Random.Range(zMin, zMax);
-            pos = new Vector3(x, y, z);
-            boss = Instantiate(boss, pos, Quaternion.identity);
-            boss.player = player;
-
-            spawn = false;
-        }
     }
 
 
