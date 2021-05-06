@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 // this class is attached to the player to detect when to display the death menu
@@ -44,7 +45,15 @@ public class DeathManager : MonoBehaviour
     // restart game from beginning
     public void restartGame()
     {
-        //pm.pauseByDeath();
+        //Destroy(gameObject);
+        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
+        foreach (GameObject o in objects)
+        {
+            Destroy(o.gameObject);
+        }
+        Scene s = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(s.name, LoadSceneMode.Single);
+        Time.timeScale = 1f;
     }
 
     // quit game entirely
