@@ -53,7 +53,7 @@ public class DeathManager : MonoBehaviour
         }
         Scene s = SceneManager.GetActiveScene();
         SceneManager.LoadScene(s.name, LoadSceneMode.Single);
-        Time.timeScale = 1f;
+        pm.pauseByDeath();
     }
 
     // quit game entirely

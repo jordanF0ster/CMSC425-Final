@@ -9,13 +9,21 @@ public class Player : MonoBehaviour
     public HealthManager manager;
     PauseManager pm;
     DeathManager dm;
+    StartManager sm;
     private AudioSource[] sources;
     private AudioSource hitSound;
     bool dead = false;
+    // if the player is the starting player i.e first player ever spawned for game run
+    public bool isStartingPlayer = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (isStartingPlayer)
+        {
+            sm = GetComponent<StartManager>();
+            sm.showMenu();
+        }
         manager?.showHearts(health);
         pm = GetComponent<PauseManager>();
         sources = GetComponents<AudioSource>();
