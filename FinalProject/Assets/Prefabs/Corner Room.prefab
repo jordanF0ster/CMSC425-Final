@@ -264,13 +264,15 @@ MonoBehaviour:
   - {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5, type: 3}
   player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
   numEnemiesType: 05000000
-  xMin: 0
-  xMax: 0
-  zMin: 0
-  zMax: 0
+  xMin: -47.5
+  xMax: -87.5
+  zMin: -20
+  zMax: 20
   wall: {fileID: 5544699967493730960, guid: 3426737792bf0471d91e18e9744b5b98, type: 3}
-  wallCoordx: 0
-  wallCoordz: 0
+  corner: 1
+  wallCoordx: -47.5
+  wallCoordz: 20
+  entered: {fileID: 1687053060516698660}
 --- !u!1 &2174112150211690853
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +471,7 @@ GameObject:
   - component: {fileID: 2845263560980169644}
   - component: {fileID: 2095807123506808462}
   - component: {fileID: 5666111758429713284}
+  - component: {fileID: 1687053060516698660}
   m_Layer: 8
   m_Name: Corner Room
   m_TagString: Untagged
@@ -559,6 +562,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1687053060516698660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3086703593969802887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f5d86a14f034b3f845701cece55d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enteredRoom: 0
 --- !u!1 &6304720447979575993
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,13 +730,15 @@ MonoBehaviour:
   - {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5, type: 3}
   player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
   numEnemiesType: 05000000
-  xMin: 0
-  xMax: 0
-  zMin: 0
-  zMax: 0
+  xMin: -47.5
+  xMax: -87.5
+  zMin: 20
+  zMax: -20
   wall: {fileID: 5544699967493730960, guid: 3426737792bf0471d91e18e9744b5b98, type: 3}
-  wallCoordx: 0
-  wallCoordz: 0
+  corner: 1
+  wallCoordx: -47.5
+  wallCoordz: 20
+  entered: {fileID: 1687053060516698660}
 --- !u!54 &589918112651842967
 Rigidbody:
   m_ObjectHideFlags: 0

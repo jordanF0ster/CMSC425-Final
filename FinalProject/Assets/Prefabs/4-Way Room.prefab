@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 54008180329579379}
   - component: {fileID: 7613588005843446770}
   - component: {fileID: 1529060319548592269}
+  - component: {fileID: 1357275565833723372}
   m_Layer: 8
   m_Name: 4-Way Room
   m_TagString: Untagged
@@ -199,6 +200,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1357275565833723372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755489446695128446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f5d86a14f034b3f845701cece55d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enteredRoom: 0
 --- !u!1 &3358088838712637882
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +299,7 @@ MonoBehaviour:
   corner: 0
   wallCoordx: 0
   wallCoordz: 0
+  entered: {fileID: 1357275565833723372}
 --- !u!1 &4929769002029410220
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +386,7 @@ MonoBehaviour:
   corner: 0
   wallCoordx: 0
   wallCoordz: 0
+  entered: {fileID: 1357275565833723372}
 --- !u!1 &5512166634489033375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,6 +1031,7 @@ MonoBehaviour:
   corner: 0
   wallCoordx: 0
   wallCoordz: 0
+  entered: {fileID: 1357275565833723372}
 --- !u!1 &8802579442319712541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,6 +1118,7 @@ MonoBehaviour:
   corner: 0
   wallCoordx: 0
   wallCoordz: 0
+  entered: {fileID: 1357275565833723372}
 --- !u!1 &9154223171063573829
 GameObject:
   m_ObjectHideFlags: 0
