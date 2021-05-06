@@ -209,8 +209,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8774787282216530262}
   - component: {fileID: 2623289673746732880}
-  - component: {fileID: 6342942824945652740}
   - component: {fileID: 4745974147879365872}
+  - component: {fileID: 8487998486455277143}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -245,22 +245,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 4, z: 4.9}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6342942824945652740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3358088838712637882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a846eea786a345d9bc47203012b6641, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5,
-    type: 3}
-  player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
-  numEnemies: 5
 --- !u!54 &4745974147879365872
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -277,6 +261,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8487998486455277143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3358088838712637882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1313563514f08453a9a6160b389577fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesToSpawn:
+  - {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5, type: 3}
+  player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
+  numEnemiesType: 05000000
+  xMin: 0
+  xMax: 0
+  zMin: 0
+  zMax: 0
+  wall: {fileID: 5544699967493730960, guid: 3426737792bf0471d91e18e9744b5b98, type: 3}
+  corner: 0
+  wallCoordx: 0
+  wallCoordz: 0
 --- !u!1 &4929769002029410220
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,8 +295,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6748938630484491932}
   - component: {fileID: 3133110845484163596}
-  - component: {fileID: 6275899422561930729}
   - component: {fileID: 677528435994080771}
+  - component: {fileID: 7735528885409366716}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -323,22 +331,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 4, z: 4.9}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6275899422561930729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4929769002029410220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a846eea786a345d9bc47203012b6641, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5,
-    type: 3}
-  player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
-  numEnemies: 5
 --- !u!54 &677528435994080771
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -355,6 +347,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &7735528885409366716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4929769002029410220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1313563514f08453a9a6160b389577fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesToSpawn:
+  - {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5, type: 3}
+  player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
+  numEnemiesType: 05000000
+  xMin: 0
+  xMax: 0
+  zMin: 0
+  zMax: 0
+  wall: {fileID: 5544699967493730960, guid: 3426737792bf0471d91e18e9744b5b98, type: 3}
+  corner: 0
+  wallCoordx: 0
+  wallCoordz: 0
 --- !u!1 &5512166634489033375
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,8 +939,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3219857899276344518}
   - component: {fileID: 5283181134294901912}
-  - component: {fileID: 2209463038565709052}
   - component: {fileID: 8779649522518343579}
+  - component: {fileID: 1756599073214130691}
   m_Layer: 0
   m_Name: GameObject (2)
   m_TagString: Untagged
@@ -959,22 +975,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 4, z: 4.9}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2209463038565709052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8444991638169750542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a846eea786a345d9bc47203012b6641, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5,
-    type: 3}
-  player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
-  numEnemies: 5
 --- !u!54 &8779649522518343579
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -991,6 +991,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1756599073214130691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444991638169750542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1313563514f08453a9a6160b389577fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesToSpawn:
+  - {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5, type: 3}
+  player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
+  numEnemiesType: 05000000
+  xMin: 0
+  xMax: 0
+  zMin: 0
+  zMax: 0
+  wall: {fileID: 5544699967493730960, guid: 3426737792bf0471d91e18e9744b5b98, type: 3}
+  corner: 0
+  wallCoordx: 0
+  wallCoordz: 0
 --- !u!1 &8802579442319712541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,8 +1025,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7501178070054699408}
   - component: {fileID: 310211808881023458}
-  - component: {fileID: 2908977718326800290}
   - component: {fileID: 2960350253487281238}
+  - component: {fileID: 7046534191613263722}
   m_Layer: 0
   m_Name: GameObject (3)
   m_TagString: Untagged
@@ -1037,22 +1061,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 4, z: 4.9}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2908977718326800290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8802579442319712541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a846eea786a345d9bc47203012b6641, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5,
-    type: 3}
-  player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
-  numEnemies: 5
 --- !u!54 &2960350253487281238
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1069,6 +1077,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7046534191613263722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8802579442319712541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1313563514f08453a9a6160b389577fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesToSpawn:
+  - {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5, type: 3}
+  player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
+  numEnemiesType: 05000000
+  xMin: 0
+  xMax: 0
+  zMin: 0
+  zMax: 0
+  wall: {fileID: 5544699967493730960, guid: 3426737792bf0471d91e18e9744b5b98, type: 3}
+  corner: 0
+  wallCoordx: 0
+  wallCoordz: 0
 --- !u!1 &9154223171063573829
 GameObject:
   m_ObjectHideFlags: 0

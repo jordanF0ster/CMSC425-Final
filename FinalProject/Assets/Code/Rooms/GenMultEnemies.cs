@@ -24,8 +24,9 @@ public class GenMultEnemies : MonoBehaviour
     public float zMin;
     public float zMax;
     public GameObject wall;
+    public bool corner;
 
-    GameObject[] walls = new GameObject[2];
+    GameObject[] walls;
     public float wallCoordx;
     public float wallCoordz;
     // Start is called before the first frame update
@@ -37,6 +38,7 @@ public class GenMultEnemies : MonoBehaviour
             numEnemies += x;
 
         enemies = new Enemy[numEnemies];
+        walls = corner ? new GameObject[2] : new GameObject[4];
     }
 
     // Update is called once per frame
@@ -122,12 +124,18 @@ public class GenMultEnemies : MonoBehaviour
                 Debug.Log("HIT@: " + player);
                 spawnEnemies(enemiesToSpawn, numEnemiesType, xMin, xMax, zMin, zMax, player);
                 spawn = false;
-
                 Quaternion rotate = Quaternion.Euler(0, 90, 0);
                 GameObject wall1 = Instantiate(wall, new Vector3((xMax + xMin)/2, 2.5f, wallCoordz + 1.5f), rotate);
                 GameObject wall2 = Instantiate(wall, new Vector3(wallCoordx + 1.5f, 2.5f, (zMax + zMin)/2), Quaternion.identity);
                 walls[0] = wall1;
                 walls[1] = wall2;
+
+                if (corner == false) {
+                    GameObject wall3 = Instantiate(wall, new Vector3((xMax + xMin)/2, 2.5f, wallCoordz + 44.5f), rotate);
+                    GameObject wall4 = Instantiate(wall, new Vector3(wallCoordx + 44.5f, 2.5f, (zMax + zMin)/2), Quaternion.identity);
+                    walls[2] = wall3;
+                    walls[3] = wall4;
+                }
             }
         }
 

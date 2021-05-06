@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 4730223533462540587}
   - component: {fileID: 2638945658784017492}
   - component: {fileID: 3459015014341260614}
+  - component: {fileID: 3934209636163614788}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -247,6 +248,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &3934209636163614788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142230176207326283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1313563514f08453a9a6160b389577fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesToSpawn:
+  - {fileID: 5484040300657712108, guid: 4e6fe59c39021436ea67279f3a27f3a5, type: 3}
+  player: {fileID: 1151489111812770831, guid: 1b6afb6124dbb4778b43146c9ed3153e, type: 3}
+  numEnemiesType: 05000000
+  xMin: 0
+  xMax: 0
+  zMin: 0
+  zMax: 0
+  wall: {fileID: 5544699967493730960, guid: 3426737792bf0471d91e18e9744b5b98, type: 3}
+  wallCoordx: 0
+  wallCoordz: 0
 --- !u!1 &2174112150211690853
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,6 +719,8 @@ MonoBehaviour:
   zMin: 0
   zMax: 0
   wall: {fileID: 5544699967493730960, guid: 3426737792bf0471d91e18e9744b5b98, type: 3}
+  wallCoordx: 0
+  wallCoordz: 0
 --- !u!54 &589918112651842967
 Rigidbody:
   m_ObjectHideFlags: 0
