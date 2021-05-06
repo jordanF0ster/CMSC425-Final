@@ -6,6 +6,13 @@ TagManager:
   tags:
   - PlayerGo
   - MainCanvas
+  - PauseQuitButton
+  - PauseResumeButton
+  - DeathRestartButton
+  - DeathQuitButton
+  - StartGameButton
+  - StartHowButton
+  - StartQuitButton
   layers:
   - Default
   - TransparentFX
