@@ -10,6 +10,7 @@ public class Blaster : MonoBehaviour
     private LineRenderer line;
     private AudioSource source;
     PauseManager pm;
+    bool isShooting = false;
 
 
     void Start()
@@ -25,20 +26,23 @@ public class Blaster : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !pm.isPaused())
         {
             StartCoroutine(shoot());
-            source.Play();
         }
     }
 
     // coroutine to show line renderer
     public IEnumerator shoot()
     {
+        if (isShooting)
+            yield break;
+
+        isShooting = true;
         line.enabled = true;
 
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
         RaycastHit hit;
 
         line.SetPosition(0, tip.position);
-
+        source.Play();
 
         if (Physics.Raycast(transform.position, fwd, out hit, shootDist))
         {
@@ -65,5 +69,6 @@ public class Blaster : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         line.enabled = false;
+        isShooting = false;
     }
 }

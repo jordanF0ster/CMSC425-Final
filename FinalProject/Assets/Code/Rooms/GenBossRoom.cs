@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// EXAMPLE FILE DONT USE 
-
-
-public class GenMultEnemies : MonoBehaviour
+public class GenBossRoom : MonoBehaviour
 {
+
+    public BossEnemy boss;
+    int phase = 0; // what phase we are in for the boss fight
+    public int maxPhases = 3; // how many times will the player repeat the boss fight;
+
     public Enemy[] enemiesToSpawn; // all enemies to be spawned in a room
     public Player player; // target
     Enemy[] enemies; // house all enmies
@@ -23,39 +25,46 @@ public class GenMultEnemies : MonoBehaviour
     public float xMax;
     public float zMin;
     public float zMax;
-    public GameObject wall;
-    public bool corner;
 
-    GameObject[] walls;
-    public float wallCoordx;
-    public float wallCoordz;
+    //float x;
+    //float y;
+    //float z;
+
     // Start is called before the first frame update
     void Start()
     {
-        // here is where the player and enemies for the room are generated
-
         foreach (int x in numEnemiesType)
             numEnemies += x;
 
         enemies = new Enemy[numEnemies];
-        walls = corner ? new GameObject[2] : new GameObject[4];
+        Debug.Log("NUM: " + numEnemiesType[0]);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (checkIfAllMarked())
+        if (phase < maxPhases && checkIfAllMarked())
         {
-            foreach (GameObject g in walls) {
-                if (g != null) {
-                    Destroy(g.gameObject);
-                }
-            }
+            boss.unMark();
             foreach (Enemy e in enemies)
             {
                 if (e != null)
                     Destroy(e.gameObject);
             }
+
+            //boss.unMark();
+            phase += 1;
+            spawnNextPhase();
+        }
+        else if (phase == maxPhases)
+        {
+            foreach (Enemy e in enemies)
+            {
+                if (e != null)
+                    Destroy(e.gameObject);
+            }
+            if (boss != null)
+                Destroy(boss.gameObject);
         }
     }
 
@@ -76,8 +85,35 @@ public class GenMultEnemies : MonoBehaviour
             }
         }
 
-        return true;
+        return boss.isMarked();
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject != null && other.gameObject.tag == "PlayerGo")
+        {
+            player = other.gameObject.GetComponent<Player>();
+        }
+
+
+        //Debug.Log("Collsion detectedVVVVV");
+
+        if (spawn && player != null)
+        {
+            spawnEnemies(enemiesToSpawn, numEnemiesType, xMin, xMax, zMin, zMax, player);
+
+            x = Random.Range(xMin, xMax);
+            y = 2;
+            z = Random.Range(zMin, zMax);
+            pos = new Vector3(x, y, z);
+            boss = Instantiate(boss, pos, Quaternion.identity);
+            boss.player = player;
+
+            spawn = false;
+        }
+    }
+
 
     // here we instantiate num number of enemies in a random position that fits within [xMinRange,xMaxRange] and [zMinRange, zMaxRange] inclusively
     public void spawnEnemyType(Enemy toSpawn, int num, float xMinRange, float xMaxRange, float zMinRange, float zMaxRange, Player target, int lstStartPos)
@@ -112,33 +148,9 @@ public class GenMultEnemies : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
+    // spawns next phase of enemies
+    public void spawnNextPhase()
     {
-
-        //Debug.Log(other.gameObject.tag);
-
-        if (other.gameObject != null && other.gameObject.tag == "PlayerGo")
-        {
-            player = other.gameObject.GetComponent<Player>();
-            if (spawn) {
-                Debug.Log("HIT@: " + player);
-                spawnEnemies(enemiesToSpawn, numEnemiesType, xMin, xMax, zMin, zMax, player);
-                spawn = false;
-                Quaternion rotate = Quaternion.Euler(0, 90, 0);
-                GameObject wall1 = Instantiate(wall, new Vector3((xMax + xMin)/2, 2.5f, wallCoordz + 1.5f), rotate);
-                GameObject wall2 = Instantiate(wall, new Vector3(wallCoordx + 1.5f, 2.5f, (zMax + zMin)/2), Quaternion.identity);
-                walls[0] = wall1;
-                walls[1] = wall2;
-
-                if (corner == false) {
-                    GameObject wall3 = Instantiate(wall, new Vector3((xMax + xMin)/2, 2.5f, wallCoordz + 44.5f), rotate);
-                    GameObject wall4 = Instantiate(wall, new Vector3(wallCoordx + 44.5f, 2.5f, (zMax + zMin)/2), Quaternion.identity);
-                    walls[2] = wall3;
-                    walls[3] = wall4;
-                }
-            }
-        }
-
-        //Debug.Log("Collsion detectedVVVVV");
+        spawnEnemies(enemiesToSpawn, numEnemiesType, xMin, xMax, zMin, zMax, player);
     }
 }

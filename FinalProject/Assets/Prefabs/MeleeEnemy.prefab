@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  origMaterial: {fileID: 0}
   markedMaterial: {fileID: 2100000, guid: afd85d3228673454f896171bedc11a64, type: 2}
   player: {fileID: 0}
 --- !u!114 &8548872925107687480

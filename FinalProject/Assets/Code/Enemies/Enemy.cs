@@ -8,15 +8,17 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int health;
-    bool marked = false;
-    MeshRenderer mesh;
+    protected bool marked = false;
+    protected MeshRenderer mesh;
+    protected Material origMaterial; // original material
     public Material markedMaterial;
     public Player player;
-    PauseManager pm;
+    protected PauseManager pm;
     // Start is called before the first frame update
     void Start()
     {
         mesh = gameObject.GetComponent<MeshRenderer>();
+        origMaterial = mesh.material;
         pm = player.GetComponent<PauseManager>();
     }
 
@@ -31,7 +33,7 @@ public class Enemy : MonoBehaviour
         if (!marked && !pm.isPaused())
         {
             marked = true;
-            mesh.material.color = markedMaterial.color;
+            mesh.material = markedMaterial;
         }
     }
 

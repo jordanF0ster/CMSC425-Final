@@ -7,7 +7,9 @@ public class BossEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        
+        mesh = gameObject.GetComponent<MeshRenderer>();
+        origMaterial = mesh.material;
+        pm = player.GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
@@ -19,5 +21,12 @@ public class BossEnemy : Enemy
     public void mark()
     {
         base.mark();
+    }
+
+    public void unMark()
+    {
+        Debug.Log("HIT@UM");
+        base.marked = false;
+        mesh.material = origMaterial;
     }
 }

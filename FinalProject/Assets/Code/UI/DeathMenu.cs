@@ -32,5 +32,6 @@ public class DeathMenu : MonoBehaviour
         dm = manager;
 
         quitButton.onClick.AddListener(dm.quitGame);
+        restartButton.onClick.AddListener(dm.restartGame);
     }
 }

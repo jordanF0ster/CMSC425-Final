@@ -9,13 +9,25 @@ public class Player : MonoBehaviour
     public HealthManager manager;
     PauseManager pm;
     DeathManager dm;
+    StartManager sm;
+    private AudioSource[] sources;
+    private AudioSource hitSound;
     bool dead = false;
+    // if the player is the starting player i.e first player ever spawned for game run
+    public bool isStartingPlayer = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (isStartingPlayer)
+        {
+            sm = GetComponent<StartManager>();
+            sm.showMenu();
+        }
         manager?.showHearts(health);
         pm = GetComponent<PauseManager>();
+        sources = GetComponents<AudioSource>();
+        hitSound = sources[1];
         dm = GetComponent<DeathManager>();
     }
 
@@ -26,12 +38,11 @@ public class Player : MonoBehaviour
         {
             dm?.showMenu();
             dead = true;
+        }
 
-//            Debug.Log("YOU ARE DEAD");
-//#if UNITY_EDITOR
-//#else
-//            Application.Quit();
-//#endif
+        if (transform.position.y < 0 && !dead)
+        {
+            damage(health);
         }
     }
 
@@ -47,9 +58,8 @@ public class Player : MonoBehaviour
 
     public void damage(int x)
     {
-        Debug.Log("DAMAGE");
         health -= x;
-
+        hitSound.Play();
         manager?.showHearts(health);
         //yield return new WaitForSeconds(1);
     }

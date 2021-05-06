@@ -56,7 +56,6 @@ public class MovePlayer : MonoBehaviour
         movePlayer(move);
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            source.Play();
             StartCoroutine(dash());
         }
     }
@@ -79,6 +78,8 @@ public class MovePlayer : MonoBehaviour
         {
             yield break;
         }
+
+        source.Play();
 
         isDashing = true;
         line.enabled = true;

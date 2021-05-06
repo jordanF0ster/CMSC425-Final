@@ -10,6 +10,7 @@ public class BossShoot : MonoBehaviour
     bool isShooting = false;
     BossEnemy e;
     PauseManager pm;
+    private AudioSource shootSound;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class BossShoot : MonoBehaviour
         line = GetComponent<LineRenderer>();
         e = GetComponent<BossEnemy>();
         pm = e.player.GetComponent<PauseManager>();
+        shootSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,12 +39,12 @@ public class BossShoot : MonoBehaviour
     // then the line changes color to signify it shooting.
     public IEnumerator shoot()
     {
-        line.enabled = true;
         if (isShooting)
             yield break;
 
-        Debug.Log("SHOT");
+        line.enabled = true;
         isShooting = true;
+        shootSound.Play();
 
         Vector3 ePos = e.player.getPos();
         yield return new WaitForSeconds(0.25f);
