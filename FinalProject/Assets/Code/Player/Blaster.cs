@@ -37,31 +37,21 @@ public class Blaster : MonoBehaviour
 
         isShooting = true;
         line.enabled = true;
-        
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
+        // we use the player transform instead of blaster because of the blaster's offset from the center
+        // the player's forward vector is where they are actually looking, not the blaster's transform
+        Vector3 shootDirection = transform.parent.forward;
+
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane playerPlane = new Plane(new Vector3(0, 1, 0), transform.position);
-        float d;
-        if (playerPlane.Raycast(ray, out d)) {
-            fwd = ray.GetPoint(d);
-        }
-        Ray playerClick = new Ray(transform.position, fwd - transform.position);
+
+
 
         line.SetPosition(0, tip.position);
         source.Play();
 
-        if (Physics.Raycast(playerClick, out hit, shootDist))
+        if (Physics.Raycast(transform.position, shootDirection, out hit, shootDist))
         {
             Enemy enemy = hit.collider.GetComponent<Enemy>();
-            //Debug.Log("EE " + enemy);
-            //enemy.mark();
-            //BossEnemy boss;
-
-            //if (enemy == null)
-            //{
-            //    boss = hit.collider.GetComponent<BossEnemy>();
-            //}
 
             line.SetPosition(1, hit.point);
             if (enemy != null && !pm.isPaused())
@@ -71,7 +61,7 @@ public class Blaster : MonoBehaviour
         }
         else
         {
-            line.SetPosition(1, transform.position + (fwd * shootDist));
+            line.SetPosition(1, transform.position + (shootDirection * shootDist));
         }
 
         yield return new WaitForSeconds(0.5f);
