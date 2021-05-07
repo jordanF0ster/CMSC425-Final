@@ -13,12 +13,14 @@ public class MoveToPlayer : MonoBehaviour
     public float rotationSpeed;
     Enemy e;
     PauseManager pm;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         e = this.GetComponent<Enemy>();
         pm = e.player.GetComponent<PauseManager>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,8 @@ public class MoveToPlayer : MonoBehaviour
         if (e != null && e.player != null && !pm.isPaused())
         {
             transform.LookAt(e.player.getPos());
-            transform.position += transform.forward * speed * Time.deltaTime;
+            //transform.position += transform.forward * speed * Time.deltaTime;
+            rb.MovePosition(transform.position + (transform.forward * speed * Time.deltaTime));
         }
     }
 

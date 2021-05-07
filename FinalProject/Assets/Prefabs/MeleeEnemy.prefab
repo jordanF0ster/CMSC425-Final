@@ -110,7 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  origMaterial: {fileID: 0}
   markedMaterial: {fileID: 2100000, guid: afd85d3228673454f896171bedc11a64, type: 2}
   player: {fileID: 0}
 --- !u!114 &8548872925107687480
@@ -142,7 +141,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &7522783121746381978
 GameObject:
   m_ObjectHideFlags: 0
