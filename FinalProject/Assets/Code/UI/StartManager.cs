@@ -8,6 +8,8 @@ public class StartManager : MonoBehaviour
     public StartMenu menu; // prefab
     private StartMenu instMenu; // instantiated menu
     private PauseManager pm;
+    private HowManager hm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,8 @@ public class StartManager : MonoBehaviour
 
     public void learnHowToPlay()
     {
-
+        hm = GetComponent<HowManager>();
+        hm.showMenu();
     }
 
     public void quitGame()
