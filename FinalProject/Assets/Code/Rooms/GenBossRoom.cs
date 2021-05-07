@@ -28,6 +28,8 @@ public class GenBossRoom : MonoBehaviour
 
     public GameObject wall;
     public EnterRoom entered;
+    private WinManager wm;
+    bool hasWon = false;
 
     //float x;
     //float y;
@@ -59,7 +61,7 @@ public class GenBossRoom : MonoBehaviour
             phase += 1;
             spawnNextPhase();
         }
-        else if (phase == maxPhases)
+        else if (phase == maxPhases && !hasWon)
         {
             foreach (Enemy e in enemies)
             {
@@ -68,6 +70,10 @@ public class GenBossRoom : MonoBehaviour
             }
             if (boss != null)
                 Destroy(boss.gameObject);
+
+            wm = GetComponent<WinManager>();
+            wm.showMenu();
+            hasWon = !hasWon;
         }
     }
 

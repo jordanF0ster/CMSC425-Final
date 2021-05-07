@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-// this class is attached to the player to detect when to display the death menu
-public class DeathManager : MonoBehaviour
+public class WinManager : MonoBehaviour
 {
     Canvas canvas;
-    public DeathMenu menu; // prefab
-    protected DeathMenu instMenu; // instantiated menu
-    protected PauseManager pm;
-
+    public WinMenu menu; // prefab
+    private WinMenu instMenu; // instantiated menu
+    private GenBossRoom room; // needed because this is not attached to the player but the final boss spawner instead
+    private PauseManager pm;
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<Canvas>();
+        
     }
 
     // Update is called once per frame
@@ -27,7 +26,8 @@ public class DeathManager : MonoBehaviour
     {
         canvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<Canvas>();
         instMenu = Instantiate(menu, canvas.transform);
-        pm = GetComponent<PauseManager>();
+        room = GetComponent<GenBossRoom>();
+        pm = room.player.GetComponent<PauseManager>();
         pm.pauseByDeath();
 
         instMenu.setDeathManager(this);

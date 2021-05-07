@@ -13,6 +13,9 @@ TagManager:
   - StartGameButton
   - StartHowButton
   - StartQuitButton
+  - HowBackButton
+  - WinRestartButton
+  - WinQuitButton
   layers:
   - Default
   - TransparentFX
