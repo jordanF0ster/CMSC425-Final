@@ -37,14 +37,21 @@ public class Blaster : MonoBehaviour
 
         isShooting = true;
         line.enabled = true;
-
+        
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
         RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Plane playerPlane = new Plane(new Vector3(0, 1, 0), transform.position);
+        float d;
+        if (playerPlane.Raycast(ray, out d)) {
+            fwd = ray.GetPoint(d);
+        }
+        Ray playerClick = new Ray(transform.position, fwd - transform.position);
 
         line.SetPosition(0, tip.position);
         source.Play();
 
-        if (Physics.Raycast(transform.position, fwd, out hit, shootDist))
+        if (Physics.Raycast(playerClick, out hit, shootDist))
         {
             Enemy enemy = hit.collider.GetComponent<Enemy>();
             //Debug.Log("EE " + enemy);
