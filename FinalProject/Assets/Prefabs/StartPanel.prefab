@@ -196,7 +196,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Name of Game
+  m_Text: Space Cubes
 --- !u!1 &4249795046624764075
 GameObject:
   m_ObjectHideFlags: 0
